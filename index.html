@@ -51,11 +51,18 @@
   pointer-events:none;
 }
 .subtitle { 
-      color: #fafafa;   /* instead of var(--white) which is #f8f5f2 */
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);   /* subtle shadow = instant contrast win */
+  color: #ffffff !important;           /* pure white */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8) !important;   /* stronger shadow */
 }
 h1 { 
-  text-shadow: 0 3px 12px rgba(0,0,0,0.7); 
+  text-shadow: 0 4px 16px rgba(0,0,0,0.85) !important; 
+}
+label[for="salary"]::before,
+label[for="currentAttrition"]::before,
+label[for="newAttrition"]::before,
+label[for="headcount"]::before,
+label[for="replacementPercent"]::before {
+  content: attr(for);
 }
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
