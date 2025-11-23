@@ -34,6 +34,14 @@
     .result{font-size:2.8rem;font-weight:800;color:var(--cyan);margin:2rem 0;text-align:center;}
     #breakdown{color:var(--grey);text-align:center;line-height:1.6;}
     @media (max-width:768px){h1{font-size:3rem;}.hero-overlay{padding:1rem;}}
+    .calculator .help{
+  font-size:0.92rem;
+  color:var(--grey);
+  margin:0.4rem 0 1.6rem;
+  line-height:1.5;
+}
+.calculator details summary{list-style:none;}
+.calculator details summary::-webkit-details-marker{display:none;}
   </style>
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -53,79 +61,66 @@
     </div>
   </header>
 
- <section style="padding:5rem 2rem 2rem;background:var(--white);">
+ <section style="padding:5rem 2rem 6rem;background:var(--white);">
+  <!-- Proof paragraph — left-aligned, smaller, elegant -->
   <div style="max-width:720px;margin:0 auto 4rem;">
-    <p style="font: size 1em;line-height:1.7;color:var(--charcoal);text-align:left;">
+    <p style="font-size:1rem;line-height:1.75;color:var(--charcoal);text-align:left;">
       In a borough where 42 % of professionals still cite commute stress and housing costs as their biggest drag on wellbeing (Gallup London 2025), 
       the most forward-thinking Chelsea businesses have quietly rewritten the rules. 
       Properly implemented hybrid + remote policies are now slashing burnout by 25 %, cutting voluntary attrition by half, 
       and turning talent retention into the ultimate unfair advantage.
     </p>
   </div>
-  <!-- Calculator starts immediately below with no extra gap -->
-  <div class="calculator">
-    <h2 style="text-align:center;color:var(--navy);margin-bottom:1rem;">
+
+  <!-- Calculator — one single container, no duplicate divs -->
+<div class="calculator" id="calc">
+    <h2 style="text-align:center;color:var(--navy);margin-bottom:1rem;font-size:2.4rem;">
       Hybrid-Remote Retention Calculator — Chelsea 2025
     </h2>
-    <p style="text-align:center;color:var(--grey);max-width:700px;margin:0 auto 3rem;">
-      Built on real SW3/London numbers (Gallup 2025, CIPD, Knight Frank, ONS). 
-      Change any default — the maths stays honest.
+    <p style="text-align:center;color:var(--grey);max-width:700px;margin:0 auto 3rem;font-size:0.98rem;">
+      Built on real SW3/London numbers (Gallup 2025, CIPD, Knight Frank, ONS). Change any default — the maths stays honest.
     </p>
 
-    <div class="calculator">
+    <!-- Inputs with help text -->
+    <label>1. Average fully-loaded annual salary for the roles you want to keep</label>
+    <input type="number" id="salary" value="95000">
+    <p class="help">Include employer NI, pension, bonus, benefits. Chelsea median for mid-senior roles in 2025 is £95k–£130k (Knight Frank Wealth Report 2025).</p>
 
-      <!-- 1 -->
-      <label>1. Average fully-loaded annual salary for the roles you want to keep</label>
-      <input type="number" id="salary" value="95000">
-      <p class="help">Include employer NI, pension, bonus, benefits. Chelsea median for mid-senior roles in 2025 is £95k–£130k (Knight Frank Wealth Report 2025).</p>
+    <label>2. Current annual attrition rate in your team (%)</label>
+    <input type="number" id="currentAttrition" value="28">
+    <p class="help">London average for knowledge-worker roles is 26–32 % in 2025 (CIPD Good Work Index). Many Chelsea firms we speak to are 28–35 %.</p>
 
-      <!-- 2 -->
-      <label>2. Current annual attrition rate in your team (%)</label>
-      <input type="number" id="currentAttrition" value="28">
-      <p class="help">London average for knowledge-worker roles is 26–32 % in 2025 (CIPD Good Work Index). Many Chelsea firms we speak to are 28–35 % because of commute + housing costs.</p>
+    <label>3. Expected attrition with a proper hybrid/remote policy (%)</label>
+    <input type="number" id="newAttrition" value="12">
+    <p class="help">Gallup 2025: well-designed hybrid drops voluntary turnover 50–60 %. Buffer’s 2025 data shows 10–14 % is common.</p>
 
-      <!-- 3 -->
-      <label>3. Expected attrition with a proper hybrid/remote policy (%)</label>
-      <input type="number" id="newAttrition" value="12">
-      <p class="help">Gallup 2025 meta-analysis: well-designed hybrid drops voluntary turnover by 50–60 %. Buffer’s 2025 State of Remote Work shows London firms hitting 10–14 % with 3–4 days remote.</p>
+    <label>4. Number of employees in this salary band</label>
+    <input type="number" id="headcount" value="20">
+    <p class="help">Typical Chelsea boutique agency, prop-tech, or family office is 12–40 heads.</p>
 
-      <!-- 4 -->
-      <label>4. Number of employees in this salary band</label>
-      <input type="number" id="headcount" value="20">
-      <p class="help">Typical Chelsea boutique agency, prop-tech, or family office is 12–40 heads.</p>
+    <label>5. Total replacement cost as % of annual salary</label>
+    <input type="number" id="replacementPercent" value="90">
+    <p class="help">Conservative London average = 90–120 % once you include recruiter fees, sign-on, ramp time, and morale dip (Oxford Economics 2024 + Chelsea recruiter data 2025).</p>
 
-      <!-- 5 -->
-      <label>5. Total replacement cost as % of annual salary</label>
-      <input type="number" id="replacementPercent" value="90">
-      <p class="help">
-        Conservative London average = 90–120 % of salary once you include:<br>
-        • Recruiter fees (20–30 %)<br>
-        • Sign-on + guaranteed bonus<br>
-        • 3–6 months ramp time lost productivity<br>
-        • Team morale dip<br>
-        Source: Oxford Economics 2024 + Chelsea recruiter data 2025.
-      </p>
+    <!-- Result -->
+    <div class="result" id="result">£0 saved per year</div>
+    <div id="breakdown" style="margin:2rem 0;font-size:1.1rem;line-height:1.7;text-align:center;"></div>
 
-      <!-- RESULT -->
-      <div class="result" id="result">£0 saved per year</div>
-      <div id="breakdown" style="margin:2rem 0;font-size:1.1rem;line-height:1.7;"></div>
+    <!-- Skeptic box -->
+    <details style="margin-top:3rem;background:rgba(26,42,68,0.04);padding:1.5rem;border-radius:12px;">
+      <summary style="font-weight:600;cursor:pointer;color:var(--navy);">Why these defaults are conservative (click)</summary>
+      <ul style="margin-top:1rem;color:var(--grey);line-height:1.6;font-size:0.95rem;">
+        <li>Many Chelsea firms are seeing 35–45 % churn right now (anecdotal from our research).</li>
+        <li>Replacement costs in SW3 often exceed 150 % once you include equity top-ups and counter-offers.</li>
+        <li>Productivity uplift from lower burnout is not included here (Gallup estimates +23 % for engaged hybrid teams).</li>
+        <li>We ignored the £400k+ client relationships that walk out the door with each senior departure.</li>
+      </ul>
+    </details>
 
-      <!-- SKEPTIC-PROOF BOX -->
-      <details style="margin-top:3rem;background:rgba(26,42,68,0.04);padding:1.5rem;border-radius:12px;">
-        <summary style="font-weight:600;cursor:pointer;color:var(--navy);">Why these defaults are conservative (click)</summary>
-        <ul style="margin-top:1rem;color:var(--grey);line-height:1.6;">
-          <li>Many Chelsea firms are seeing 35–45 % churn right now (anecdotal from our research).</li>
-          <li>Replacement costs in SW3 often exceed 150 % once you include equity top-ups and counter-offers.</li>
-          <li>Productivity uplift from lower burnout is not included here (Gallup estimates +23 % for engaged hybrid teams).</li>
-          <li>We ignored the £400k+ client relationships that walk out the door with each senior departure.</li>
-        </ul>
-      </details>
-
-      <div style="text-align:center;margin-top:3rem;">
-        <a href="https://thethriveclan.com/llmo/llmo-ai-automation-tools" class="cta-btn">
-          Own the exact LLMO playbooks Chelsea firms are quietly using →
-        </a>
-      </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="https://thethriveclan.com/llmo/llmo-ai-automation-tools" class="cta-btn">
+        Own the exact LLMO playbooks Chelsea firms are quietly using →
+      </a>
     </div>
   </div>
 </section>
