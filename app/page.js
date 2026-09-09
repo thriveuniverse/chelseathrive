@@ -1,69 +1,115 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div>
+      {/* TEST hero image — placeholder photo, not final */}
+      <section className="relative w-full h-[70vh] min-h-130 overflow-hidden">
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/nearly-ready.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="absolute inset-0 bg-linear-to-r from-[#0b0e13] via-[#0b0e13]/65 to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,#0b0e13_0%,rgba(11,14,19,0)_20%)]" />
+
+        <div className="relative h-full flex items-center">
+          <div className="max-w-md md:max-w-lg px-6 md:px-16 text-left">
+            <h1 className="text-2xl md:text-4xl font-normal text-white mb-12 leading-tight">
+              A space to rehearse the conversations that matter — before you
+              have to have them for real.
+            </h1>
+
+            <div>
+              <Link
+                href="/book"
+                className="inline-block bg-blue-600 text-white font-semibold py-3 px-7 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Book a Discovery Conversation →
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 pt-12 pb-12 text-center border-b border-[#232830]">
+        <p className="text-lg text-[#c7cdd6] leading-relaxed max-w-2xl mx-auto">
+          It&apos;s hard enough sharing a difficult idea in your own
+          language — harder still when you&apos;re also chasing the right
+          words in someone else&apos;s. The conversations that matter most
+          are exactly the ones nobody lets you practice: telling someone
+          their role is being made redundant, pushing back on a plan you
+          don&apos;t believe in, negotiating a deal you can&apos;t afford to
+          lose. Here, you can have that conversation first — as many times
+          as it takes — until it&apos;s not just correct, but sounds like
+          you. So when it&apos;s real, you&apos;ve already had it.
+        </p>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 py-12 border-t border-[#232830]">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+          What Actually Happens
+        </h2>
+        <p className="text-[#c7cdd6] leading-relaxed text-center max-w-2xl mx-auto">
+          You talk. About something real — a negotiation you&apos;re
+          dreading, a pitch you haven&apos;t nailed, a difficult conversation
+          you keep putting off. It&apos;s recorded, so nothing worth noticing
+          gets lost, and next time picks up exactly where this one left off.
+        </p>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 py-12 border-t border-[#232830]">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+          If You Want to Tighten Something
+        </h2>
+        <p className="text-[#c7cdd6] leading-relaxed text-center max-w-2xl mx-auto">
+          Some people just want the conversation, and that&apos;s enough. If
+          you&apos;d rather also drill a specific habit — a repeated tense
+          slip, a word you always reach for — a short AI-generated note and a
+          few minutes of targeted practice are there, in your own time.
+          Entirely optional.
+        </p>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 py-12 border-t border-[#232830]">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+          You&apos;ll Know It&apos;s Working
+        </h2>
+        <p className="text-[#c7cdd6] leading-relaxed text-center max-w-2xl mx-auto">
+          After each session, a short note — what went well, and the one
+          thing worth tightening next time. Not a report card. A note from
+          someone who was listening.
+        </p>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 py-12 border-t border-[#232830] text-center">
+        <p className="text-[#8791a0] text-sm mb-4">
+          Part of the same thinking as{" "}
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://thethriveclan.com"
+            className="text-blue-400 hover:text-blue-300 transition-colors"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
+            The Thrive Clan
+          </a>{" "}
+          and{" "}
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://last-prompt.com"
+            className="text-blue-400 hover:text-blue-300 transition-colors"
           >
-            Documentation
+            Last Prompt
           </a>
-        </div>
-      </main>
+          .
+        </p>
+        <Link
+          href="/method"
+          className="text-[#c7cdd6] hover:text-blue-400 text-sm transition-colors"
+        >
+          See how it works →
+        </Link>
+      </section>
     </div>
   );
 }
