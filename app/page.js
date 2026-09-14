@@ -1,6 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const testimonials = [
+  {
+    quote:
+      "Miranda – Where English Language Meets Intelligence. With a rare blend of professional teaching expertise and a remarkably high IQ, she makes learning both effective and inspiring. Her lessons go beyond grammar, helping students think in English and express themselves with clarity. With Miranda, you don't just learn English — you learn to think sharper and speak smarter.",
+    name: "A.K.",
+  },
+  {
+    quote:
+      "The best thing I learned from the course is becoming more confident with presentations. Now I don't fear writing MBA assignments. I will recommend this course and Miranda. She is very patient with different level students, and the key points of the course are clear and helpful.",
+    name: "Wayne",
+    context: "Presentation Speaking",
+  },
+  {
+    quote:
+      "She's great! You can understand your mistakes very well and work with her notes. She guides the lesson very well. At the end, she gives you a lesson summary and a basic homework. This is a great way to learn.",
+    name: "Ece",
+  },
+  {
+    quote:
+      "Miranda is a wonderful teacher. She is great at talking and listening and always gives me precise advice. I really enjoy her lesson.",
+    name: "Yuri",
+    context: "Conversation Class",
+  },
+];
+
 export default function Home() {
   return (
     <div>
@@ -83,6 +108,28 @@ export default function Home() {
           thing worth tightening next time. Not a report card. A note from
           someone who was listening.
         </p>
+      </section>
+
+      <section className="max-w-4xl mx-auto px-4 py-12 border-t border-[#232830]">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+          What Students Say
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="bg-[#12161c] rounded-xl p-6 border border-[#232830] flex flex-col"
+            >
+              <p className="text-[#c7cdd6] leading-relaxed flex-1">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <p className="text-sm text-[#8791a0] mt-4">
+                — {t.name}
+                {t.context ? `, ${t.context}` : ""}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="max-w-3xl mx-auto px-4 py-12 border-t border-[#232830] text-center">
