@@ -72,6 +72,19 @@ export default function Method() {
           Book a Discovery Conversation →
         </Link>
       </div>
+
+      <div className="mt-16 pt-8 border-t border-[#232830] text-center">
+        <p className="text-[#8791a0] text-sm">
+          While you&apos;re reading about how this works — try a lighter,
+          free version with your own team first:{" "}
+          <Link
+            href="/balloon-debate"
+            className="text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            the Balloon Debate pack →
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
